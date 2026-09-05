@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Patient Registration</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+
+        <div class="logo">
+            🏥 AI Hospital Queue
+        </div>
+
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/register">Register</a></li>
+            <li><a href="#">Queue Status</a></li>
+            <li><a href="#">Admin</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- Registration Section -->
+
+    <section class="registration-section">
+
+        <div class="registration-box">
+
+            <h1>Patient Registration</h1>
+
+            <p>Enter your details to get a queue token.</p>
+
+
+            <form action="/register" method="POST">
+
+                <label>Patient Name</label>
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+
+                <label>Age</label>
+
+                <input
+                    type="number"
+                    name="age"
+                    placeholder="Enter your age"
+                    required
+                >
+
+
+                <label>Phone Number</label>
+
+                <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Enter your phone number"
+                    required
+                >
+
+
+                <label>Department</label>
+
+               <select name="department" required>
+
+    <option value="">
+        Select Department
+    </option>
+
+    {% for department in departments %}
+
+        <option value="{{ department[0] }}">
+            {{ department[0] }}
+        </option>
+
+    {% endfor %}
+
+</select>
+<label>Patient Priority</label>
+
+<select name="priority" required>
+
+    <option value="Normal">
+        Normal
+    </option>
+
+    <option value="Emergency">
+        🚨 Emergency
+    </option>
+
+</select>
+
+                <button type="submit" class="btn">
+                    Get Queue Token
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <footer class="footer">
+
+    <p>
+        © 2026 AI Hospital Queue Management System
+    </p>
+
+    <p>
+        Powered by Artificial Intelligence 🤖
+    </p>
+
+</footer>
+
+</body>
+
+</html>

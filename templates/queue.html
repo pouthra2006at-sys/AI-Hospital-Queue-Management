@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Queue Status</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+
+        <div class="logo">
+            🏥 AI Hospital Queue
+        </div>
+
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/queue">Queue Status</a></li>
+        </ul>
+
+    </nav>
+
+
+    <section class="queue-section">
+
+        <div class="queue-box">
+
+            <h1>Check Queue Status</h1>
+
+            <p>Enter your queue token number.</p>
+
+
+            <form method="POST">
+
+                <label>Queue Token Number</label>
+
+                <input
+                    type="text"
+                    name="token"
+                    placeholder="Example: A001"
+                    required
+                >
+
+                <button type="submit" class="btn">
+                    Check Status
+                </button>
+
+            </form>
+
+
+            {% if patient %}
+
+            <div class="queue-result">
+
+                <h2>Patient Details</h2>
+
+                <p><strong>Name:</strong> {{ patient[1] }}</p>
+
+                <p><strong>Department:</strong> {{ patient[4] }}</p>
+
+                <p><strong>Token:</strong> {{ patient[5] }}</p>
+
+                <p><strong>Status:</strong> {{ patient[6] }}</p>
+
+                <p>
+                    <strong>Patients Ahead:</strong>
+                    {{ patients_ahead }}
+                </p>
+
+                <p>
+                    <strong>Estimated Waiting Time:</strong>
+                    {{ waiting_time }} Minutes
+                </p>
+
+            </div>
+
+            {% endif %}
+
+
+            {% if message %}
+
+            <p class="error-message">
+                {{ message }}
+            </p>
+
+            {% endif %}
+
+        </div>
+
+    </section>
+
+    <footer class="footer">
+
+    <p>© 2026 AI Hospital Queue Management System</p>
+
+    <p>Powered by Artificial Intelligence 🤖</p>
+
+</footer>
+
+</body>
+
+</html>

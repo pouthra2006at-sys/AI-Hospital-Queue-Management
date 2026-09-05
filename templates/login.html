@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Login</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- Navigation -->
+
+    <nav>
+
+        <div class="logo">
+
+            🏥 AI Hospital Queue
+
+        </div>
+
+
+        <ul>
+
+            <li>
+                <a href="/">Home</a>
+            </li>
+
+            <li>
+                <a href="/register">Register</a>
+            </li>
+
+            <li>
+                <a href="/queue">Queue Status</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- Login Section -->
+
+    <section class="login-section">
+
+
+        <div class="login-box">
+
+
+            <h1>
+                🔐 Admin Login
+            </h1>
+
+
+            {% if message %}
+
+                <p class="login-message">
+
+                    {{ message }}
+
+                </p>
+
+            {% endif %}
+
+
+            <form
+                action="/login"
+                method="POST"
+            >
+
+
+                <label>
+                    Username
+                </label>
+
+
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="Enter username"
+                    required
+                >
+
+
+
+                <label>
+                    Password
+                </label>
+
+
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Enter password"
+                    required
+                >
+
+
+
+                <button
+                    type="submit"
+                    class="btn"
+                >
+
+                    Login
+
+                </button>
+
+
+            </form>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 AI Hospital Queue Management System
+        </p>
+
+        <p>
+            Powered by Artificial Intelligence 🤖
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

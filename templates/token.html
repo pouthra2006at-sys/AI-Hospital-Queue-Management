@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Queue Token</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+
+        <div class="logo">
+            🏥 AI Hospital Queue
+        </div>
+
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/register">Register</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- Token Section -->
+
+    <section class="token-section">
+
+        <div class="token-box">
+
+            <h1>🎉 Registration Successful!</h1>
+
+            <p>Welcome, <strong>{{ name }}</strong></p>
+
+            <div class="token-number">
+
+                <h2>Your Queue Token</h2>
+
+                <h1>{{ token }}</h1>
+
+            </div>
+
+
+            <div class="token-details">
+
+                <p><strong>Department:</strong> {{ department }}</p>
+
+                <p><strong>Patients Ahead:</strong> {{ patients_ahead }}</p>
+
+                <p>
+                    <strong>Estimated Waiting Time:</strong>
+                    {{ waiting_time }} Minutes
+                </p>
+
+            </div>
+
+
+            <a href="/" class="btn">
+                Back to Home
+            </a>
+
+        </div>
+
+    </section>
+
+    <footer class="footer">
+
+    <p>© 2026 AI Hospital Queue Management System</p>
+
+    <p>Powered by Artificial Intelligence 🤖</p>
+
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Doctor</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <nav>
+
+        <div class="logo">
+            🏥 AI Hospital Queue
+        </div>
+
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/doctor">Doctors</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+
+    </nav>
+
+
+    <section class="form-section">
+
+        <h1>Edit Doctor 👨‍⚕️</h1>
+
+        <form method="POST">
+
+            <input
+                type="text"
+                name="name"
+                value="{{ doctor[1] }}"
+                required
+            >
+
+            <input
+                type="text"
+                name="department"
+                value="{{ doctor[2] }}"
+                required
+            >
+
+            <input
+                type="number"
+                name="consultation_time"
+                value="{{ doctor[3] }}"
+                required
+            >
+
+            <button type="submit"
+                    class="btn">
+                Update Doctor
+            </button>
+
+        </form>
+
+    </section>
+
+</body>
+
+</html>

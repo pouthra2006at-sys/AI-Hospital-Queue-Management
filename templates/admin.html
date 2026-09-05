@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+
+        <div class="logo">
+            🏥 AI Hospital Queue
+        </div>
+
+        <ul>
+            <li><a href="/">Home</a></li>
+
+            <li><a href="/register">Register</a></li>
+
+            <li><a href="/queue">Queue Status</a></li>
+
+            <li><a href="/admin">Admin</a></li>
+
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- Admin Section -->
+    <section class="admin-section">
+
+        <h1>Hospital Admin Dashboard</h1>
+
+
+        <a href="/doctor" class="btn">
+            👨‍⚕️ Manage Doctors
+        </a>
+        <!-- AI Queue Prediction -->
+        <div class="prediction-box">
+
+            <h2>🤖 AI Queue Prediction</h2>
+
+            <p>
+                <strong>Estimated Waiting Time:</strong>
+                {{ estimated_time }} minutes
+            </p>
+
+            <p>
+                <strong>Crowd Level:</strong>
+                {{ crowd_level }}
+            </p>
+
+        </div>
+
+
+        <!-- Dashboard Cards -->
+        <div class="dashboard-cards">
+
+            <div class="dashboard-card">
+                <h3>Total Patients</h3>
+
+                <h2>
+                    {{ total_patients }}
+                </h2>
+            </div>
+
+
+            <div class="dashboard-card">
+                <h3>Waiting Patients</h3>
+
+                <h2>
+                    {{ waiting_patients }}
+                </h2>
+            </div>
+
+
+            <div class="dashboard-card">
+                <h3>Completed Patients</h3>
+
+                <h2>
+                    {{ completed_patients }}
+                </h2>
+            </div>
+
+        </div>
+        <!-- Patient Statistics Chart -->
+        <div class="chart-container">
+
+            <h2>📊 Patient Statistics</h2>
+
+            <canvas id="patientChart"></canvas>
+
+        </div>
+
+
+        <!-- Department-wise Chart -->
+        <div class="chart-container">
+
+            <h2>
+                📊 Department-wise Queue Distribution
+            </h2>
+
+            <canvas id="departmentChart"></canvas>
+
+        </div>
+
+
+        <!-- Patient Table -->
+        <div class="table-container">
+
+
+            <!-- Search Box -->
+            <input
+                type="text"
+                id="patientSearch"
+                placeholder="Search by Name or Token..."
+                onkeyup="searchPatient()"
+                class="search-input"
+            >
+
+
+            <h2>Patient Queue List</h2>
+
+
+            <table id="patientTable">
+                <!-- Table Heading -->
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Name</th>
+
+                    <th>Age</th>
+
+                    <th>Phone</th>
+
+                    <th>Department</th>
+
+                    <th>Token</th>
+
+                    <th>Priority</th>
+
+                    <th>Status</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+
+                <!-- Patient Data -->
+                {% for patient in patients %}
+
+                <tr>
+
+
+                    <!-- ID -->
+                    <td>
+                        {{ patient[0] }}
+                    </td>
+
+
+                    <!-- Name -->
+                    <td>
+                        {{ patient[1] }}
+                    </td>
+
+
+                    <!-- Age -->
+                    <td>
+                        {{ patient[2] }}
+                    </td>
+
+
+                    <!-- Phone -->
+                    <td>
+                        {{ patient[3] }}
+                    </td>
+
+
+                    <!-- Department -->
+                    <td>
+                        {{ patient[4] }}
+                    </td>
+
+
+                    <!-- Token -->
+                    <td>
+                        {{ patient[5] }}
+                    </td>
+
+
+                    <!-- Priority -->
+                    <td>
+
+                        {% if patient[7] == "Emergency" %}
+
+                            🚨 Emergency
+
+                        {% else %}
+
+                            Normal
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <!-- Status -->
+                    <td>
+                        {{ patient[6] }}
+                    </td>
+                    <!-- Action Buttons -->
+                    <td>
+
+                        {% if patient[6] == "Waiting" %}
+
+                            <a
+                                href="/complete/{{ patient[0] }}"
+                                class="complete-btn"
+                            >
+                                Mark Completed
+                            </a>
+
+                            <br><br>
+
+                        {% else %}
+
+                            <span class="completed-text">
+                                Completed
+                            </span>
+
+                            <br><br>
+
+                        {% endif %}
+
+
+                        <!-- Delete Button -->
+                        <a
+                            href="/delete/{{ patient[0] }}"
+                            class="delete-btn"
+                            onclick="return confirm('Are you sure you want to delete this patient?')"
+                        >
+                            Delete
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+    </section>
+    <!-- JavaScript -->
+    <script>
+
+        /* PATIENT STATISTICS CHART */
+
+        const patientChart = new Chart(
+
+            document.getElementById("patientChart"),
+
+            {
+
+                type: "bar",
+
+                data: {
+
+                    labels: [
+
+                        "Total Patients",
+                        "Waiting Patients",
+                        "Completed Patients"
+
+                    ],
+
+                    datasets: [
+
+                        {
+
+                            label: "Patient Count",
+
+                            data: [
+
+                                {{ total_patients }},
+                                {{ waiting_patients }},
+                                {{ completed_patients }}
+
+                            ],
+
+                            borderWidth: 1
+
+                        }
+
+                    ]
+
+                },
+
+                options: {
+
+                    responsive: true,
+
+                    maintainAspectRatio: true
+
+                }
+
+            }
+
+        );
+        /* DEPARTMENT-WISE CHART */
+
+        const departmentLabels = [
+
+            {% for department in department_data %}
+
+                "{{ department[0] }}",
+
+            {% endfor %}
+
+        ];
+
+
+        const departmentCounts = [
+
+            {% for department in department_data %}
+
+                {{ department[1] }},
+
+            {% endfor %}
+
+        ];
+
+
+        const departmentChart = new Chart(
+
+            document.getElementById("departmentChart"),
+
+            {
+
+                type: "doughnut",
+
+                data: {
+
+                    labels: departmentLabels,
+
+                    datasets: [
+
+                        {
+
+                            label: "Patients",
+
+                            data: departmentCounts
+
+                        }
+
+                    ]
+
+                },
+
+                options: {
+
+                    responsive: true,
+
+                    maintainAspectRatio: true
+
+                }
+
+            }
+
+        );
+        /* SEARCH PATIENT */
+
+        function searchPatient() {
+
+            let input = document
+                .getElementById("patientSearch")
+                .value
+                .toUpperCase();
+
+
+            let table = document
+                .getElementById("patientTable");
+
+
+            let rows = table
+                .getElementsByTagName("tr");
+
+
+            for (let i = 1; i < rows.length; i++) {
+
+                let name = rows[i]
+                    .cells[1]
+                    .textContent
+                    .toUpperCase();
+
+
+                let token = rows[i]
+                    .cells[5]
+                    .textContent
+                    .toUpperCase();
+
+
+                if (
+
+                    name.includes(input) ||
+                    token.includes(input)
+
+                ) {
+
+                    rows[i].style.display = "";
+
+                }
+
+                else {
+
+                    rows[i].style.display = "none";
+
+                }
+
+            }
+
+        }
+
+    </script>
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 AI Hospital Queue Management System
+        </p>
+
+        <p>
+            Powered by Artificial Intelligence 🤖
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

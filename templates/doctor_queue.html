@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Doctor Queue</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <nav>
+
+        <div class="logo">
+            🏥 AI Hospital Queue
+        </div>
+
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/doctor">Doctors</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+
+    </nav>
+
+
+    <section class="admin-section">
+
+        <h1>
+            👨‍⚕️ Dr. {{ doctor[1] }} - Queue
+        </h1>
+
+        <h3>
+            Department: {{ doctor[2] }}
+        </h3>
+
+        <h3>
+            Consultation Time:
+            {{ doctor[3] }} minutes
+        </h3>
+
+
+        <div class="table-container">
+
+            <h2>Waiting Patients</h2>
+
+            <table>
+
+                <tr>
+                    <th>Queue No</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Token</th>
+                    <th>Status</th>
+                </tr>
+
+
+                {% for patient in patients %}
+
+                <tr>
+
+                    <td>
+                        {{ loop.index }}
+                    </td>
+
+                    <td>
+                        {{ patient[1] }}
+                    </td>
+
+                    <td>
+                        {{ patient[2] }}
+                    </td>
+
+                    <td>
+                        {{ patient[5] }}
+                    </td>
+
+                    <td>
+                        {{ patient[6] }}
+                    </td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+
+                    <td colspan="5">
+                        No waiting patients.
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>

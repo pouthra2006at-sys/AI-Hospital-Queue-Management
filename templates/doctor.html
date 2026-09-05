@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Doctor Management</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- Navigation -->
+
+    <nav>
+
+        <div class="logo">
+            🏥 AI Hospital Queue
+        </div>
+
+
+        <ul>
+
+            <li>
+                <a href="/">Home</a>
+            </li>
+
+            <li>
+                <a href="/register">Register</a>
+            </li>
+
+            <li>
+                <a href="/queue">Queue Status</a>
+            </li>
+
+            <li>
+                <a href="/admin">Admin</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- Doctor Management -->
+
+    <section class="register-section">
+
+        <div class="register-box">
+
+            <h1>
+                👨‍⚕️ Doctor Management
+            </h1>
+
+
+            <form
+                action="/doctor"
+                method="POST"
+            >
+
+
+                <label>
+                    Doctor Name
+                </label>
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter Doctor Name"
+                    required
+                >
+
+
+
+                <label>
+                    Department
+                </label>
+
+                <input
+                    type="text"
+                    name="department"
+                    placeholder="Enter Department"
+                    required
+                >
+
+
+
+                <label>
+                    Consultation Time (Minutes)
+                </label>
+
+                <input
+                    type="number"
+                    name="consultation_time"
+                    placeholder="Example: 10"
+                    required
+                >
+
+
+
+                <button
+                    type="submit"
+                    class="btn"
+                >
+                    Add Doctor
+                </button>
+
+
+            </form>
+            <hr>
+
+<h2>👨‍⚕️ Added Doctors</h2>
+
+<table border="1">
+
+    <tr>
+        <th>ID</th>
+        <th>Doctor Name</th>
+        <th>Department</th>
+        <th>Consultation Time</th>
+        <th>Action</th>
+    </tr>
+
+    {% for doctor in doctors %}
+
+    <tr>
+        <td>{{ doctor[0] }}</td>
+        <td>{{ doctor[1] }}</td>
+        <td>{{ doctor[2] }}</td>
+        <td>{{ doctor[3] }} minutes</td>
+      <td>
+
+    <a href="/doctor_queue/{{ doctor[0] }}"
+       class="queue-btn">
+        View Queue
+    </a>
+
+    <a href="/edit_doctor/{{ doctor[0] }}"
+       class="edit-btn">
+        Edit
+    </a>
+
+    <a href="/delete_doctor/{{ doctor[0] }}"
+       class="delete-btn"
+       onclick="return confirm('Are you sure you want to delete this doctor?')">
+        Delete
+    </a>
+
+</td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 AI Hospital Queue Management System
+        </p>
+
+        <p>
+            Powered by Artificial Intelligence 🤖
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

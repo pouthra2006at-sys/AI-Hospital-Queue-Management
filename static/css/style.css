@@ -1,0 +1,529 @@
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: Arial, sans-serif;
+}
+
+body {
+background-color: #f4f7fb;
+}
+
+/* Navigation Bar */
+nav {
+background-color: #0b6efd;
+color: white;
+padding: 18px 8%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.logo {
+font-size: 22px;
+font-weight: bold;
+}
+
+nav ul {
+display: flex;
+list-style: none;
+}
+
+nav ul li {
+margin-left: 25px;
+}
+
+nav ul li a {
+color: white;
+text-decoration: none;
+font-size: 16px;
+}
+
+/* Hero Section */
+.hero {
+min-height: 400px;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+padding: 50px 20px;
+}
+
+.hero-content {
+max-width: 800px;
+}
+
+.hero h1 {
+font-size: 42px;
+color: #1f2937;
+margin-bottom: 20px;
+}
+
+.hero p {
+font-size: 18px;
+color: #555;
+line-height: 1.6;
+margin-bottom: 30px;
+}
+
+.btn {
+display: inline-block;
+background-color: #0b6efd;
+color: white;
+padding: 14px 28px;
+text-decoration: none;
+border-radius: 8px;
+font-size: 17px;
+}
+
+/* Features Section */
+.features {
+padding: 60px 8%;
+text-align: center;
+background-color: white;
+}
+
+.features h2 {
+font-size: 30px;
+margin-bottom: 40px;
+}
+
+.feature-container {
+display: flex;
+justify-content: center;
+gap: 25px;
+flex-wrap: wrap;
+}
+
+.feature-box {
+width: 280px;
+padding: 30px;
+background-color: #f4f7fb;
+border-radius: 12px;
+}
+
+.feature-box h3 {
+margin-bottom: 15px;
+}
+
+/* Footer */
+footer {
+background-color: #1f2937;
+color: white;
+text-align: center;
+padding: 20px;
+}
+/* Patient Registration Page */
+
+.registration-section {
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+.registration-box {
+    width: 100%;
+    max-width: 500px;
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+}
+
+.registration-box h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.registration-box p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.registration-box form {
+    display: flex;
+    flex-direction: column;
+}
+
+.registration-box label {
+    margin-top: 15px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.registration-box input,
+.registration-box select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 16px;
+}
+
+.registration-box button {
+    margin-top: 25px;
+    border: none;
+    cursor: pointer;
+}
+/* Queue Token Page */
+
+.token-section {
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+.token-box {
+    width: 100%;
+    max-width: 500px;
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.token-box > p {
+    margin: 15px 0;
+}
+
+.token-number {
+    margin: 30px 0;
+    padding: 25px;
+    background-color: #f4f7fb;
+    border-radius: 12px;
+}
+
+.token-number h1 {
+    font-size: 45px;
+    color: #0b6efd;
+    margin-top: 10px;
+}
+
+.token-details {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.token-details p {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+/* Queue Status Page */
+
+.queue-section {
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+.queue-box {
+    width: 100%;
+    max-width: 550px;
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+}
+
+.queue-box h1,
+.queue-box > p {
+    text-align: center;
+}
+
+.queue-box > p {
+    margin: 15px 0 25px;
+    color: #666;
+}
+
+.queue-box form {
+    display: flex;
+    flex-direction: column;
+}
+
+.queue-box label {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.queue-box input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 16px;
+}
+
+.queue-box button {
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.queue-result {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f4f7fb;
+    border-radius: 10px;
+}
+
+.queue-result h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.queue-result p {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.error-message {
+    margin-top: 20px;
+    text-align: center;
+    color: red;
+}
+/* Admin Dashboard */
+
+.admin-section {
+    padding: 50px 8%;
+}
+
+.admin-section > h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+
+/* Dashboard Cards */
+
+.dashboard-cards {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.dashboard-card {
+    width: 250px;
+    padding: 25px;
+    background-color: white;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.dashboard-card h3 {
+    margin-bottom: 15px;
+}
+
+.dashboard-card h2 {
+    font-size: 32px;
+    color: #0b6efd;
+}
+
+
+/* Patient Table */
+
+.table-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+.table-container h2 {
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #0b6efd;
+    color: white;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+/* Complete Button */
+
+.complete-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #198754;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.completed-text {
+    font-weight: bold;
+    color: #198754;
+}
+/* AI Queue Prediction */
+
+.prediction-box {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: white;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.prediction-box h2 {
+    margin-bottom: 20px;
+}
+
+.prediction-box p {
+    font-size: 18px;
+    margin: 12px 0;
+}
+/* Queue Analytics Chart */
+
+.chart-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 25px;
+    background-color: white;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.chart-container canvas {
+    margin-top: 20px;
+}
+/* Department Pie Chart */
+
+#departmentChart {
+    max-height: 400px;
+}
+.search-input {
+
+    width: 100%;
+    max-width: 400px;
+
+    padding: 12px;
+
+    margin-bottom: 20px;
+
+    border: 1px solid #cccccc;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+}
+/* Delete Patient Button */
+
+.delete-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #dc3545;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+}
+/* Mobile Responsive Design */
+
+@media (max-width: 768px) {
+
+    .dashboard-cards {
+        flex-direction: column;
+    }
+
+    .dashboard-card {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+}
+/* Footer */
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+    background-color: #222;
+    color: white;
+}
+
+.footer p {
+    margin: 5px;
+}
+/* ==============================
+   MOBILE RESPONSIVE DESIGN
+============================== */
+
+@media screen and (max-width: 768px) {
+
+    nav {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+
+    nav ul li {
+        margin: 8px 0;
+    }
+
+
+    .dashboard-cards {
+        flex-direction: column;
+    }
+
+
+    .dashboard-card {
+        width: 100%;
+    }
+
+
+    .admin-section {
+        padding: 15px;
+    }
+
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+
+    table {
+        min-width: 900px;
+    }
+
+
+    .chart-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+
+    form {
+        width: 100%;
+    }
+
+}
